@@ -1,0 +1,20 @@
+
+
+//二分查找首先是有序的
+
+void ave_search(int nums[], int Target) { 
+  int left = 0;
+  int right = nums.size() - 1;  
+  while (left <= right) {
+    int middle = left + (right-left)>>1;
+  if (nums[middle] > Target) {  // Target 在左区间[left, middle-1]
+      right = middle - 1;
+    } else if (nums[middle] < Target) {  // Target 在右区间[middle+1, right]
+      left = middle + 1;
+    } else {  // nums[middle] == target
+      return middle;  // 在数组中找到目标值，直接返回下标
+    }
+  }
+  // 未找到目标值
+  return -1;
+}
