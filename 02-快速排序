@@ -1,0 +1,14 @@
+//  洛谷快速排序模板
+
+
+void quick_sort(int q[], int l, int r) {
+  if (i >= j) return;
+  int i = l - 1, j = r + 1, mid = q[(l + r) >> 2];  // 因为采用do while 写的 do while 是先执行再判断， 所以i要向前一位 j要向后一位  mid 为数组的中间值，与归并排序二分排序不同
+  while (i < j) {
+    do i++; while(q[i] < mid);  // 如果下标i对应的值小于mid对应的值，则移到mid的前面
+    do j--; while(q[j] > mid);  // 如果下标j对应的值大于mid对应的值，则移到mid的后面
+    if(x < y) swap(q[i], q[j]);  // 交换两值，保证mid前面都是比mid小的值，mid后面都是比mid大的值
+  } 
+  quick_sort(q, l, j);  // 左区间递归
+  quick_sort(q, j+1, r);  // 右区间递归
+  }
